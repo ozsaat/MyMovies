@@ -26,11 +26,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
 
-        showArticles()
+        showMovies()
 
     }
 
-    private fun showArticles() {
+    private fun showMovies() {
 
         disposable = client.getPopularMovies("en", "popularity.desc", apiKey)
                 .subscribeOn(Schedulers.io())
