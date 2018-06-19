@@ -13,13 +13,13 @@ import kotlinx.android.synthetic.main.content_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    val apiKey: String = BuildConfig.ApiKey
+    private val apiKey: String = BuildConfig.ApiKey
 
-    val client by lazy {
+    private val client by lazy {
         MovieAPI.create()
     }
 
-    var disposable: Disposable? = null
+    private var disposable: Disposable? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
         Log.e(e?.message, e?.stackTrace.toString())
     }
 
-    fun setupRecycler(movieList: MovieResponse) {
+    private fun setupRecycler(movieList: MovieResponse) {
 
         movieRecycler.setHasFixedSize(true)
         val layoutManager =  GridLayoutManager(this, 2)

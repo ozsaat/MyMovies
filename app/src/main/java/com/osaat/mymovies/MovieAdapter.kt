@@ -19,13 +19,13 @@ class MovieAdapter(private val response: MovieResponse, private val itemClick: (
 
     override fun getItemCount() = response.size()
 
-    class MoviesHolder(view: View, val itemClick: (Movie) -> Unit) : RecyclerView.ViewHolder(view) {
+    class MoviesHolder(view: View, private val itemClick: (Movie) -> Unit) : RecyclerView.ViewHolder(view) {
 
 
         fun bind(movie: Movie) {
             with(movie) {
-                Picasso.get().load("http://image.tmdb.org/t/p/w185/$posterPath")
-                        .resize(360, 600)
+                Picasso.get().load("http://image.tmdb.org/t/p/w342/$posterPath")
+//                        .resize(360, 600)
                         .into(itemView.moviePoster)
 
                 itemView.setOnClickListener { itemClick(this) }
