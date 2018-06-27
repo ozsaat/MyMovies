@@ -28,7 +28,7 @@ android {
     }
 
 
-        allprojects {
+    allprojects {
         repositories {
             jcenter()
             maven {
@@ -40,7 +40,7 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation"org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
     implementation 'com.android.support:appcompat-v7:27.1.1'
     implementation 'com.android.support:exifinterface:27.1.1'
     implementation 'com.android.support.constraint:constraint-layout:1.1.0'
@@ -68,8 +68,6 @@ dependencies {
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
     implementation "com.squareup.retrofit2:converter-moshi:2.0.0"
     implementation 'com.squareup.okhttp3:logging-interceptor:3.6.0'
-
-
 
     //Picasso
     implementation 'com.squareup.picasso:picasso:2.71828'

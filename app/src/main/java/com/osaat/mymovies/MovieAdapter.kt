@@ -21,11 +21,9 @@ class MovieAdapter(private val response: MovieResponse, private val itemClick: (
 
     class MoviesHolder(view: View, private val itemClick: (Movie) -> Unit) : RecyclerView.ViewHolder(view) {
 
-
         fun bind(movie: Movie) {
             with(movie) {
                 Picasso.get().load("http://image.tmdb.org/t/p/w342/$posterPath")
-//                        .resize(360, 600)
                         .into(itemView.moviePoster)
 
                 itemView.setOnClickListener { itemClick(this) }
