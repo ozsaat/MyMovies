@@ -15,7 +15,6 @@ data class Movie(
 )
 
 data class MovieResponse(
-        @SerializedName("page") val page: Int, @SerializedName("results") private val list: List<Movie>) {
-    operator fun get(position: Int) = list[position]
-    fun size() = list.size
+        @SerializedName("page") val page: Int,
+        @SerializedName("results") val list: List<Movie>) {
 }

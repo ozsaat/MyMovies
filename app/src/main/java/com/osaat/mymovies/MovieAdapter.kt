@@ -7,26 +7,32 @@ import android.view.ViewGroup
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.movie_row.view.*
 
-class MovieAdapter(private val response: MovieResponse, private val itemClick: (Movie) -> Unit) : RecyclerView.Adapter<MovieAdapter.MoviesHolder>() {
+class MovieAdapter : RecyclerView.Adapter<MovieAdapter.MoviesHolder>() {
+
+    private var dataList = mutableListOf<Movie>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MoviesHolder{
-        return MoviesHolder(LayoutInflater.from(parent.context).inflate(R.layout.movie_row, parent, false), itemClick)
+        return MoviesHolder(LayoutInflater.from(parent.context).inflate(R.layout.movie_row, parent, false))
     }
 
     override fun onBindViewHolder(holder: MoviesHolder, position: Int) {
-        holder.bind(response[position])
+        holder.bind(dataList[position])
     }
 
-    override fun getItemCount() = response.size()
+    override fun getItemCount() = dataList.size
 
-    class MoviesHolder(view: View, private val itemClick: (Movie) -> Unit) : RecyclerView.ViewHolder(view) {
+    fun setData(movies: MovieResponse) { //add boolean flag so pull to refresh runs dataList.clear but calling different page number (infinite scroll) doesn't
+        dataList.clear()
+        dataList.addAll(movies.list)
+        notifyDataSetChanged()
+    }
+
+    class MoviesHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         fun bind(movie: Movie) {
             with(movie) {
                 Picasso.get().load("http://image.tmdb.org/t/p/w342/$posterPath")
                         .into(itemView.moviePoster)
-
-                itemView.setOnClickListener { itemClick(this) }
             }
         }
 
