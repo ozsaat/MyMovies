@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.GridLayoutManager
 import android.util.Log
+import android.view.View
+import android.widget.Toast
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
@@ -14,7 +16,10 @@ import kotlinx.android.synthetic.main.content_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    private val apiKey: String = BuildConfig.ApiKey
+//    private val apiKey: String = BuildConfig.ApiKey
+
+    private val apiKey: String = "bf06c213984ef349e1b70856ae7c1147"
+
 
     private val client by lazy { MovieAPI.create() }
     private lateinit var movieAdapter: MovieAdapter
@@ -56,6 +61,16 @@ class MainActivity : AppCompatActivity() {
         layoutManager.orientation = GridLayoutManager.VERTICAL
         movieRecycler.layoutManager = layoutManager
         movieRecycler.adapter = movieAdapter
+        movieRecycler.addOnItemTouchListener(CustomRecyclerViewItemTouchListener(movieRecycler, intArrayOf(R.id.moviePoster),
+                object : CustomRecyclerViewItemTouchListener.MyCustomClickListener {
+                    override fun onLongClick(view: View, position: Int) {
+                        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                    }
+
+                    override fun onClick(view: View, position: Int) {
+                        Toast.makeText(view.context, "Single click action on position = " + position, Toast.LENGTH_LONG).show()
+                    }
+                }))
 
     }
 
