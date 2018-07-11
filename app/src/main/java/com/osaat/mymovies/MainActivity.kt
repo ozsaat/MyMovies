@@ -16,10 +16,7 @@ import kotlinx.android.synthetic.main.content_main.*
 
 class MainActivity : AppCompatActivity() {
 
-//    private val apiKey: String = BuildConfig.ApiKey
-
-    private val apiKey: String = "bf06c213984ef349e1b70856ae7c1147"
-
+    private val apiKey: String = BuildConfig.ApiKey
 
     private val client by lazy { MovieAPI.create() }
     private lateinit var movieAdapter: MovieAdapter
