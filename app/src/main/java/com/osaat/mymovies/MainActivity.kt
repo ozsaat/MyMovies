@@ -18,6 +18,8 @@ class MainActivity : AppCompatActivity() {
 
     private val apiKey: String = BuildConfig.ApiKey
 
+
+
     private val client by lazy { MovieAPI.create() }
     private lateinit var movieAdapter: MovieAdapter
 
@@ -65,7 +67,10 @@ class MainActivity : AppCompatActivity() {
                     }
 
                     override fun onClick(view: View, position: Int) {
-                        Toast.makeText(view.context, "Single click action on position = " + position, Toast.LENGTH_LONG).show()
+                        val intent = Intent(this@MainActivity, DetailsActivity::class.java)
+//                        intent.putExtra(DetailsActivity.EXTRA_MOVIE, Movie)
+                        startActivity(intent)
+//                        Toast.makeText(view.context, "Single click action on position = " + position, Toast.LENGTH_LONG).show()
                     }
                 }))
 
