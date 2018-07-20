@@ -19,7 +19,6 @@ class MainActivity : AppCompatActivity() {
     private val apiKey: String = BuildConfig.ApiKey
 
 
-
     private val client by lazy { MovieAPI.create() }
     private lateinit var movieAdapter: MovieAdapter
 
@@ -43,7 +42,7 @@ class MainActivity : AppCompatActivity() {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                         { result -> movieAdapter.setData(result) },
-                        {e -> onGetMoviesFailure(e)}
+                        { e -> onGetMoviesFailure(e) }
                 )
 
     }
@@ -56,7 +55,7 @@ class MainActivity : AppCompatActivity() {
     private fun setupRecycler() {
         movieAdapter = MovieAdapter()
         movieRecycler.setHasFixedSize(true)
-        val layoutManager =  GridLayoutManager(this, 2)
+        val layoutManager = GridLayoutManager(this, 2)
         layoutManager.orientation = GridLayoutManager.VERTICAL
         movieRecycler.layoutManager = layoutManager
         movieRecycler.adapter = movieAdapter
@@ -66,14 +65,18 @@ class MainActivity : AppCompatActivity() {
                         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
                     }
 
+                    //                    override fun onClick(view: View, position: Int)
                     override fun onClick(view: View, position: Int) {
+                        val movie: Movie = movieAdapter.getItem(position)
+                        println("Clicked item XXXXX " + movie)
                         val intent = Intent(this@MainActivity, DetailsActivity::class.java)
-//                        intent.putExtra(DetailsActivity.EXTRA_MOVIE, Movie)
+                        intent.putExtra(DetailsActivity.EXTRA_MOVIE, movie)
                         startActivity(intent)
-//                        Toast.makeText(view.context, "Single click action on position = " + position, Toast.LENGTH_LONG).show()
+                        Toast.makeText(view.context, "Single click action on position = " + position, Toast.LENGTH_LONG).show()
                     }
                 }))
 
     }
 
 }
+

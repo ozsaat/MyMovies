@@ -27,6 +27,10 @@ class MovieAdapter : RecyclerView.Adapter<MovieAdapter.MoviesHolder>() {
         notifyDataSetChanged()
     }
 
+    fun getItem(position: Int): Movie {
+        return dataList[position]
+    }
+
     class MoviesHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         fun bind(movie: Movie) {
