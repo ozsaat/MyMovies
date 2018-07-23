@@ -16,14 +16,13 @@
 
 
         <ImageView
-            android:id="@+id/backDrop"
+            android:id="@+id/movieBackDrop"
             android:layout_width="match_parent"
             android:layout_height="203dp"
             android:layout_marginEnd="0dp"
             android:layout_marginStart="0dp"
             android:contentDescription="placeholder"
             android:scaleType="centerCrop"
-            android:src="@drawable/singapore"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -41,21 +40,20 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.064"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/backDrop" />
+            app:layout_constraintTop_toBottomOf="@+id/movieBackDrop" />
 
         <TextView
-            android:id="@+id/releaseDate"
+            android:id="@+id/movieReleaseDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="28dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="12dp"
-            android:text="05/05/18"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.224"
             app:layout_constraintStart_toEndOf="@+id/releaseDateTitle"
-            app:layout_constraintTop_toBottomOf="@+id/backDrop"
+            app:layout_constraintTop_toBottomOf="@+id/movieBackDrop"
             app:layout_constraintVertical_bias="0.0" />
 
         <TextView
@@ -66,23 +64,22 @@
             android:layout_marginTop="8dp"
             android:text="Rating"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/rating"
+            app:layout_constraintEnd_toStartOf="@+id/movieRating"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/releaseDateTitle"
             app:layout_constraintTop_toBottomOf="@+id/releaseDateTitle"
             app:layout_constraintVertical_bias="0.0" />
 
         <TextView
-            android:id="@+id/rating"
+            android:id="@+id/movieRating"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:layout_marginTop="8dp"
-            android:text="8.8"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.441"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/releaseDate" />
+            app:layout_constraintTop_toBottomOf="@+id/movieReleaseDate" />
 
         <TextView
             android:id="@+id/overviewTitle"
@@ -98,13 +95,12 @@
             app:layout_constraintTop_toBottomOf="@+id/ratingTitle" />
 
         <TextView
-            android:id="@+id/textView5"
+            android:id="@+id/movieOverview"
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:text="As the Avengers and their allies have continued to protect the world from threats too large for any one hero to handle, a new danger has emerged from the cosmic shadows: Thanos. A despot of intergalactic infamy, his goal is to collect all six Infinity Stones, artifacts of unimaginable power, and use them to inflict his twisted will on all of reality. Everything the Avengers have fought for has led up to this moment - the fate of Earth and existence itself has never been more uncertain."
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.181"
             app:layout_constraintStart_toStartOf="parent"
