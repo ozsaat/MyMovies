@@ -1,5 +1,6 @@
 package com.osaat.mymovies
 
+import android.arch.lifecycle.ViewModelProviders
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -16,7 +17,11 @@ import kotlinx.android.synthetic.main.content_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    private val apiKey: String = BuildConfig.ApiKey
+//    private val apiKey: String = BuildConfig.ApiKey
+
+    private val apiKey: String = "bf06c213984ef349e1b70856ae7c1147"
+
+    private lateinit var moviesViewModel: MovieViewModel
 
 
     private val client by lazy { MovieAPI.create() }
@@ -31,7 +36,11 @@ class MainActivity : AppCompatActivity() {
 
         setupRecycler()
 
-        showMovies()
+        moviesViewModel = ViewModelProviders.of(this).get(MovieViewModel::class.java)
+
+        moviesViewModel.getMovies()
+
+//        showMovies()
 
     }
 
@@ -68,11 +77,9 @@ class MainActivity : AppCompatActivity() {
                     //                    override fun onClick(view: View, position: Int)
                     override fun onClick(view: View, position: Int) {
                         val movie: Movie = movieAdapter.getItem(position)
-                        println("Clicked item XXXXX " + movie)
                         val intent = Intent(this@MainActivity, DetailsActivity::class.java)
                         intent.putExtra(DetailsActivity.EXTRA_MOVIE, movie)
                         startActivity(intent)
-                        Toast.makeText(view.context, "Single click action on position = " + position, Toast.LENGTH_LONG).show()
                     }
                 }))
 

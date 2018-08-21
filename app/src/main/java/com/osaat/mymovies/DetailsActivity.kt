@@ -27,8 +27,6 @@ class DetailsActivity : AppCompatActivity() {
         val intent = intent
         val movie = intent.getParcelableExtra<Movie>(EXTRA_MOVIE)
 
-        println("Detail movie YYYYYYYYY" + movie)
-
         backdropImage = movieBackDrop
         releaseDate = movieReleaseDate
         overview = movieOverview
